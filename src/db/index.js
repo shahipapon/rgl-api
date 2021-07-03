@@ -19,6 +19,16 @@ myDB.getRglData = () => {
     });
   });
 };
+myDB.getTableConfig = () => {
+  return new Promise((resolve, reject) => {
+    pool.query("SELECT * FROM rglTableConfig", (err, res) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(res);
+    });
+  });
+};
 
 myDB.userInfo = () => {
   return new Promise((resolve, reject) => {
