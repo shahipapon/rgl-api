@@ -85,4 +85,14 @@ myDB.addRglData = (values) => {
   });
 };
 
+myDB.addRglTableCOnfig = (values) => {
+  return new Promise((resolve, reject) => {
+    pool.query(`UPDATE rglTableConfig SET config = ? where id = 0 `, [values.data], (err, res) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(res);
+    });
+  });
+};
 module.exports = myDB;
